@@ -9,19 +9,12 @@ import java.util.List;
 
 public class InputView {
 
-
     public int getPurchaseAmount() {
-        while (true) {
-            System.out.println("구입금액을 입력해 주세요.");
-            try {
-                String input = Console.readLine();
-                String trimmedInput = validateInputNotNull(input);
-                validatePurchaseAmount(trimmedInput);
-                return Integer.parseInt(trimmedInput);
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            }
-        }
+        System.out.println("구입금액을 입력해 주세요.");
+        String input = Console.readLine();
+        String trimmedInput = validateInputNotNull(input);
+        validatePurchaseAmount(trimmedInput);
+        return Integer.parseInt(trimmedInput);
     }
 
     private void validatePurchaseAmount(String input) {
@@ -37,19 +30,12 @@ public class InputView {
         }
     }
 
-
     public Lotto getWinningLotto() {
-        while (true) {
-            System.out.println("\n당첨 번호를 입력해 주세요.");
-            try {
-                String input = Console.readLine();
-                String trimmedInput = validateInputNotNull(input);
-                List<Integer> numbers = parseNumbers(trimmedInput);
-                return new Lotto(numbers); // Lotto 생성자에서 번호 개수/중복/범위 검증
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            }
-        }
+        System.out.println("\n당첨 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        String trimmedInput = validateInputNotNull(input);
+        List<Integer> numbers = parseNumbers(trimmedInput);
+        return new Lotto(numbers); // Lotto 생성자에서 번호 개수/중복/범위 검증
     }
 
     private List<Integer> parseNumbers(String input) {
@@ -63,21 +49,14 @@ public class InputView {
         return numbers;
     }
 
-
     public int getBonusNumber(Lotto winningLotto) {
-        while (true) {
-            System.out.println("\n보너스 번호를 입력해 주세요.");
-            try {
-                String input = Console.readLine();
-                String trimmedInput = validateInputNotNull(input);
-                ValidationUtils.validateIsNumeric(trimmedInput);
-                int bonusNumber = Integer.parseInt(trimmedInput);
-                validateBonusNumber(bonusNumber, winningLotto);
-                return bonusNumber;
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            }
-        }
+        System.out.println("\n보너스 번호를 입력해 주세요.");
+        String input = Console.readLine();
+        String trimmedInput = validateInputNotNull(input);
+        ValidationUtils.validateIsNumeric(trimmedInput);
+        int bonusNumber = Integer.parseInt(trimmedInput);
+        validateBonusNumber(bonusNumber, winningLotto);
+        return bonusNumber;
     }
 
     private void validateBonusNumber(int bonusNumber, Lotto winningLotto) {
